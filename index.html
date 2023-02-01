@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyggelig meldingsboks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="app"></div>
+    
+    <script>
+        //model
+        let username = null;
+        let age = null;
+        let message = '';
+        
+        window.onload = function() {document.getElementById("app").innerHTML = ` 
+            <h1>Velkommen!</h1>
+            <input id="nameInput" type="text" oninput="updateInfo()" placeholder="Skriv inn navnet ditt">
+            <input id="birthdateInput" type="text" oninput="updateInfo()" placeholder="Skriv inn året du er født">
+            <div id="message">${message}</div>
+            `;} //Fant imidlertid ikke ut hvordan man skulle beholde input-feltene etter tastetrykk uten at tastingen blir "bremset" ved å kalle view on-input. 
+        
+        //view
+
+        //view();
+        function view() { /*HTML*/ //<-- dersom du vil få innerhtml stringen til å se ut som HTML
+        /*    let html = ` 
+            <h1>Velkommen!</h1>`;
+            !username ? 
+            html += `<input id="nameInput" type="text" oninput="updateInfo()" placeholder="Skriv inn navnet ditt">` : 
+            html += `<input id="nameInput" type="text" oninput="updateInfo()" value="${username}">`;
+
+            !age ?
+            html += `<input id="birthdateInput" type="text" oninput="updateInfo()" placeholder="Skriv inn året du er født">` :
+            html += `<input id="birthdateInput" type="text" oninput="updateInfo()" value="${age}>"`;
+            
+            html += `<div id="message">${message}</div>
+            `;
+            
+            document.getElementById("app").innerHTML = html;*/ 
+            document.getElementById('message').innerHTML = message; 
+
+        }
+    //controller
+    </script>
+    
+    <script src="controller.js"></script>
+</body>    
+</html>

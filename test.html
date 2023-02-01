@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Uke 6 - Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.19.4.css">
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.19.4.js"></script>
+  <script src="controller.js"></script>
+  <script>
+    
+    //Username
+
+    QUnit.module('Username validation');
+
+    QUnit.test('validation - username - valid', function (assert) {
+      let username = 'Hans Christian';
+      let actual = checkUsername(username);
+      let expected = true;
+      assert.equal(actual, expected);
+    });
+
+    QUnit.test('validation - username - too short', function (assert) {
+      let username = 'H';
+      let actual = checkUsername(username);
+      let expected = false;
+      assert.equal(actual, expected);
+    });
+
+    QUnit.test('validation - username - invalid characters', function (assert) {
+      let username = '123';
+      let actual = checkUsername(username);
+      let expected = false;
+      assert.equal(actual, expected);
+    });
+
+    QUnit.test('validation - username - whitespaces', function (assert) {
+      let username = '       H     ';
+      let actual = checkUsername(username);
+      let expected = false;
+      assert.equal(actual, expected);
+    })
+
+    //Characters
+
+    QUnit.module('Character validation');
+    
+    QUnit.test('validation - characters - valid', function (assert) {
+      let char = 'å';
+      let actual = checkCharacter(char);
+      let expected = true;
+      assert.equal(actual, expected);
+    });
+
+    QUnit.test('validation - characters - invalid', function (assert) {
+      let char = '1';
+      let actual = checkCharacter(char);
+      let expected = false;
+      assert.equal(actual, expected);
+    });
+
+    //Age
+    
+    QUnit.module('Age validation');
+    
+    QUnit.test('validation - age - valid', function (assert) {
+      let currentDate = new Date();
+      let birthYear = currentDate.getFullYear();
+      let actual = checkBirthDate(birthYear);
+      let expected = true;
+      assert.equal(actual, expected);
+    });
+
+    QUnit.test('validation - age - out of range', function (assert) {
+      let expected = false;
+      let currentDate = new Date();
+      let extraYear = currentDate.getFullYear() + 1;
+      let actual1 = checkBirthDate('1899');
+      let actual2 = checkBirthDate(extraYear);
+      assert.equal(actual1, expected);
+      assert.equal(actual2, expected);
+    });
+
+    QUnit.test('validation - age - wrong datatype', function (assert) {
+      let expected = false;
+      let actual1 = checkBirthDate('not a number1998');
+      let actual2 = checkBirthDate(null);
+      let actual3 = checkBirthDate();
+      assert.equal(actual1, expected);
+      assert.equal(actual2, expected);
+      assert.equal(actual3, expected);
+    });
+  </script>
+</body>
