@@ -5,7 +5,7 @@ function updateInfo() {
     if (validateValues(nameInput, birthdateInput)) {
         username = nameInput.trim();
         age = getAge(Number(birthdateInput));
-        message = `Hei, ${username}, på ${age} år!`;
+        message = `Hei, ${username}, på ${age} år!<br><a href="test.html">Her er en lenke til test-siden</a>`;
     }
     else {
         username = nameInput;
